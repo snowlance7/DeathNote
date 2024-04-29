@@ -193,7 +193,14 @@ namespace DeathNote
 
             try
             {
-                EnemyToDie.KillEnemyOnOwnerClient();
+                if (EnemyToDie.enemyType.canDie == false) 
+                {
+                    EnemyToDie.KillEnemyServerRpc(false);
+                }
+                else
+                {
+                    EnemyToDie.KillEnemyOnOwnerClient();
+                }
             }
             catch
             {
