@@ -198,18 +198,12 @@ namespace DeathNote
 
             try
             {
-                if (!EnemyToDie.enemyType.canDie)
-                {
-                    EnemyToDie.KillEnemyServerRpc(false);
-                }
-                else
-                {
-                    EnemyToDie.KillEnemyOnOwnerClient();
-                }
+                EnemyToDie.enemyType.canDie = true;
+                EnemyToDie.KillEnemyOnOwnerClient();
             }
             catch
             {
-                EnemyToDie.KillEnemy();
+                logger.LogDebug("Error while attempting to kill the enemy");
             }
         }
     }
