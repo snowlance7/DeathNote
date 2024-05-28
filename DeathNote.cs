@@ -15,7 +15,6 @@ namespace DeathNote
 {
     [BepInPlugin(modGUID, modName, modVersion)]
     [BepInDependency(LethalLib.Plugin.ModGUID)]
-    [BepInDependency("LethalNetworkAPI")]
     public class DeathNoteBase : BaseUnityPlugin
     {
         private const string modGUID = "Snowlance.DeathNote";
@@ -57,6 +56,8 @@ namespace DeathNote
 
             LoggerInstance = PluginInstance.Logger;
             LoggerInstance.LogDebug($"Plugin {modName} loaded successfully.");
+
+            NetcodePatcher();
 
             configRarity = Config.Bind("General", "Rarity", 5, "Rarity of the death note.");
             configTimer = Config.Bind("General", "Timer", true, "If picking the death details should have a time limit.\nWhen you enter a name and click submit, you'll have x in-game seconds to fill in a time and details before it adds the name to the book.");
@@ -110,8 +111,6 @@ namespace DeathNote
             NetworkPrefabs.RegisterNetworkPrefab(DeathNote.spawnPrefab);
             Utilities.FixMixerGroups(DeathNote.spawnPrefab);
             Items.RegisterScrap(DeathNote, iRarity, Levels.LevelTypes.All);
-            
-            NetworkHandler.Init();
 
             harmony.PatchAll();
             
@@ -126,6 +125,23 @@ namespace DeathNote
                 if (localPlayer.health > (DeathController.HalfHealth))
                 {
                     localPlayer.DamagePlayer(localPlayer.health - DeathController.HalfHealth, false, true, CauseOfDeath.Unknown, -1); // TODO: Test this more
+                }
+            }
+        }
+
+        private static void NetcodePatcher()
+        {
+            var types = Assembly.GetExecutingAssembly().GetTypes();
+            foreach (var type in types)
+            {
+                var methods = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                foreach (var method in methods)
+                {
+                    var attributes = method.GetCustomAttributes(typeof(RuntimeInitializeOnLoadMethodAttribute), false);
+                    if (attributes.Length > 0)
+                    {
+                        method.Invoke(null, null);
+                    }
                 }
             }
         }

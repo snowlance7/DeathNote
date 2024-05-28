@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1833346815
+CRC: 2098774148
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: fb2097b51d0f4125c7750e40d63a57c2
+    Hash: 95585f60b5003bac35d436d555bf0ae5
   TypeTreeHash:
     serializedVersion: 2
     Hash: 16ef1ac7306339def4bfc060e33cacad
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: fb2097b51d0f4125c7750e40d63a57c2
+    Hash: 95585f60b5003bac35d436d555bf0ae5
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -115,6 +115,7 @@ Assets:
 - Assets/DeathNote/DeathNote.fbx
 - Assets/DeathNote/AudioMixerController/Diagetic.mixer
 - Assets/DeathNote/Textures/ui_background.jpg
+- Assets/DeathNote/NetworkHandler.prefab
 - Assets/DeathNote/Textures/ui_shinigami_eye.png
 - Assets/DeathNote/Audio/book-pocket.mp3
 Dependencies: []

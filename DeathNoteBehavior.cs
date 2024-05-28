@@ -1,10 +1,4 @@
 ﻿using BepInEx.Logging;
-using DeathNote;
-using GameNetcodeStuff;
-using LethalNetworkAPI;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
 

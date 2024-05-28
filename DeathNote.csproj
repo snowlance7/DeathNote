@@ -28,12 +28,6 @@
     <Reference Include="LethalLib">
       <HintPath>..\1Resources\1Dependencies\LethalLib.dll</HintPath>
     </Reference>
-    <Reference Include="LethalNetworkAPI">
-      <HintPath>..\1Resources\1Dependencies\LethalNetworkAPI.dll</HintPath>
-    </Reference>
-    <Reference Include="OdinSerializer">
-      <HintPath>..\1Lethal Company Debugging\BepInEx\plugins\OdinSerializer.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>..\1Lethal Company Debugging\Lethal Company_Data\Managed\Unity.InputSystem.dll</HintPath>
     </Reference>
@@ -66,5 +60,13 @@
   <ItemGroup>
     <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" PrivateAssets="all" />
   </ItemGroup>
+
+  <Target Name="NetcodePatch" AfterTargets="PostBuildEvent">
+    <Exec Command="netcode-patch &quot;$(TargetPath)&quot; @(ReferencePathWithRefAssemblies->'&quot;%(Identity)&quot;', ' ')" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;C:\Users\snowl\source\repos\DeathNote\Assets\mod_assets&quot; &quot;C:\Users\snowl\source\repos\1Lethal Company Debugging\BepInEx\plugins&quot; /Y&#xD;&#xA;xcopy &quot;C:\Users\snowl\source\repos\DeathNote\bin\Debug\netstandard2.1\DeathNote.dll&quot; &quot;C:\Users\snowl\source\repos\1Lethal Company Debugging\BepInEx\plugins&quot; /Y" />
+  </Target>
 
 </Project>

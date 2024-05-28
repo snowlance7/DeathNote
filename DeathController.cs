@@ -188,8 +188,7 @@ namespace DeathNote
             if (PlayerToDie.isPlayerDead) { UIControllerScript.Instance.ShowResults($"{PlayerToDie.playerUsername} has died already."); return; }
             logger.LogDebug($"Killing player {PlayerToDie.playerUsername}: {causeOfDeathString}, {TimeOfDeathString}");
 
-            string[] info = { PlayerToDie.actualClientId.ToString(), causeOfDeathString, detailsString };
-            NetworkHandler.clientMessage.SendServer(info);
+            NetworkHandler.Instance.KillPlayerServerRpc(PlayerToDie.actualClientId, causeOfDeathString, detailsString);
         }
 
         public void KillEnemy()
