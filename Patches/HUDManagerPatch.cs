@@ -40,6 +40,7 @@ namespace DeathNote.Patches
                             logger.LogDebug($"Found name: {name}");
                             node.headerText = name;
                             node.subText = enemy.enemyType.enemyName;
+                            DeathController.ScannedEnemies.Add(name);
                         }
                     }
                 }

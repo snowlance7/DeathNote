@@ -38,12 +38,13 @@ namespace DeathNote
 
         public static ConfigEntry<bool> configAlwaysShowPlayerNames;
         public static ConfigEntry<bool> configShowEnemyNames;
+        public static ConfigEntry<bool> configShowScannedEnemies;
 
         public static ConfigEntry<bool> configShowUnkillableEnemyNames;
         public static ConfigEntry<bool> configLockUI;
 
-        public static ConfigEntry<bool> configKillWithDeathType;
-        public static ConfigEntry<int> configTimeToKillWithDeathType;
+        //public static ConfigEntry<bool> configKillWithDeathType;
+        //public static ConfigEntry<int> configTimeToKillWithDeathType;
 
         //public static ConfigEntry<string> configCustomNames;
 
@@ -71,11 +72,12 @@ namespace DeathNote
 
             configAlwaysShowPlayerNames = Config.Bind("Names", "Always Show Player Names", false, "Always shows player names above their head. Disabling this will only show player names when you have the Shinigami Eyes.");
             configShowEnemyNames = Config.Bind("Names", "ShowEnemyNames", true, "Allows you to see enemy names when scanning them if you have the Shinigami Eyes.");
+            configShowScannedEnemies = Config.Bind("Names", "ShowScannedEnemies", false, "Allows you to see scanned enemies as a list in the death note if you have the Shinigami Eyes.");
             
             configShowUnkillableEnemyNames = Config.Bind("Experimental", "Show Unkillable Enemy Names", false, "Allows you to see the names of enemies that are immortal. WARNING: Killing them can break things or cause bugs.");
             configLockUI = Config.Bind("Experimental", "Lock UI", false, "Locks the UI when showing it which should help with renabling input when pressing certain keybinds.");
-            configKillWithDeathType = Config.Bind("Experimental", "Kill With Death Type", false, "If this is true, killing a player with certain death types will attempt to kill them with whatever monster or hazard that kills them that way before the time limit.\nIf this fails, it will kill them the normal way.");
-            configTimeToKillWithDeathType = Config.Bind("Experimental", "Time To Kill With Death Type", 120, "Time in seconds to kill with death type before killing them normally.");
+            //configKillWithDeathType = Config.Bind("Experimental", "Kill With Death Type", false, "If this is true, killing a player with certain death types will attempt to kill them with whatever monster or hazard that kills them that way before the time limit.\nIf this fails, it will kill them the normal way.");
+            //configTimeToKillWithDeathType = Config.Bind("Experimental", "Time To Kill With Death Type", 120, "Time in seconds to kill with death type before killing them normally.");
 
             // Loading assets
             string sAssemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -124,7 +126,7 @@ namespace DeathNote
                 PlayerControllerB localPlayer = StartOfRound.Instance.localPlayerController;
                 if (localPlayer.health > (DeathController.HalfHealth))
                 {
-                    localPlayer.DamagePlayer(localPlayer.health - DeathController.HalfHealth, false, true, CauseOfDeath.Unknown, -1); // TODO: Test this more
+                    localPlayer.DamagePlayer(localPlayer.health - DeathController.HalfHealth, false, true, CauseOfDeath.Unknown, 0); // TODO: Test this more
                 }
             }
         }

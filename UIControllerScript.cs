@@ -27,6 +27,7 @@ namespace DeathNote
         public Label lblResult;
         public TextField txtName;
         public DropdownField dpdnPlayerList;
+        public DropdownField dpdnScannedEnemiesList;
         public Button btnSubmit;
         public TextField txtTimeOfDeath;
         public DropdownField dpdnDeathType;
@@ -86,6 +87,13 @@ namespace DeathNote
                 dpdnPlayerList.choices.Add(" ");
                 dpdnPlayerList.choices.AddRange(StartOfRound.Instance.allPlayerScripts.Where(x => x.isPlayerControlled).Select(x => x.playerUsername).ToList());
                 dpdnPlayerList.style.display = DisplayStyle.Flex;
+            }
+
+            if (configShowScannedEnemies.Value)
+            {
+                dpdnScannedEnemiesList = root.Q<DropdownField>("dpdnScannedEnemiesList");
+                if (dpdnScannedEnemiesList == null) { logger.LogError("dpdnScannedEnemiesList not found."); return; }
+                dpdnScannedEnemiesList.style.display = DisplayStyle.Flex;
             }
 
             btnSubmit = root.Q<Button>("btnSubmit");
@@ -189,6 +197,13 @@ namespace DeathNote
             StartOfRound.Instance.localPlayerUsingController = false;
             IngamePlayerSettings.Instance.playerInput.DeactivateInput();
             StartOfRound.Instance.localPlayerController.disableLookInput = true;
+
+            if (configShowScannedEnemies.Value)
+            {
+                dpdnScannedEnemiesList.choices.Clear();
+                dpdnScannedEnemiesList.choices.Add("");
+                dpdnScannedEnemiesList.choices.AddRange(DeathController.ScannedEnemies);
+            }
         }
 
         public void HideUI()
@@ -310,7 +325,10 @@ namespace DeathNote
             deathController = new DeathController();
             PlayerControllerB playerToDie = StartOfRound.Instance.allPlayerScripts.ToList().Where(x => x.playerUsername.ToLower() == txtName.text.ToLower()).FirstOrDefault();
             string enemyName = DeathController.EnemyNames.Where(x => x.ToLower().Replace(" ", "") == txtName.text.ToLower().Replace(" ", "")).FirstOrDefault();
-
+            if (enemyName == null && configShowScannedEnemies.Value && dpdnScannedEnemiesList.value != "")
+            {
+                enemyName = dpdnScannedEnemiesList.value;
+            }
             
             if (enemyName != null)
             {
@@ -534,6 +552,9 @@ namespace DeathNote
             btnActivateEyes.style.display = DisplayStyle.None;
             lblSEDescription.text = "You have the shinigami eyes. You can now see entity names. This will reset after the round is over.";
             lblSEDescription.style.color = Color.red;
+
+            //PlayerControllerB localPlayer = StartOfRound.Instance.localPlayerController;
+            //StartOfRound.Instance.localPlayerController.DamagePlayer(localPlayer.health / 2);
 
             DeathController.ShinigamiEyesActivated = true;
         }

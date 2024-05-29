@@ -14,7 +14,6 @@ namespace DeathNote
 
         public static bool ShinigamiEyesActivated = false;
 
-        public static List<string> EnemyNames = new List<string>();
         public string? EnemyName;
         public EnemyAI EnemyToDie;
 
@@ -28,7 +27,8 @@ namespace DeathNote
         public float TimeOfDeath;
 
         public static List<string> Details = new List<string> { "Heart Attack", "Decapitation", "Coil Decapitation", "Seizure", "Disappearance", "Mask", "Burn" }; // disapearance is 4
-
+        public static List<string> EnemyNames = new List<string>();
+        public static List<string> ScannedEnemies = new List<string>();
 
         public static List<string> GetCauseOfDeathsAsStrings()
         {

@@ -24,6 +24,7 @@ namespace DeathNote.Patches
                 DeathController.ShinigamiEyesActivated = false;
                 logger.LogDebug("Set ShinigamiEyesActivated to false");
                 DeathController.EnemyNames = new List<string>();
+                DeathController.ScannedEnemies = new List<string>();
                 logger.LogDebug("Cleared EnemyNames");
 
                 if (UIControllerScript.Instance == null) { return; }
