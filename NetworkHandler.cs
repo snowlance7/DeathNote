@@ -70,7 +70,7 @@ namespace DeathNote
             if (networkPrefab != null)
                 return;
 
-            networkPrefab = (GameObject)DeathNoteBase.DNAssetBundle.LoadAsset("Assets/DeathNote/NetworkHandler.prefab");
+            networkPrefab = (GameObject)DeathNoteBase.DNAssetBundle.LoadAsset("Assets/DeathNote/NetworkHandlerDN.prefab");
             networkPrefab.AddComponent<NetworkHandler>();
 
             NetworkManager.Singleton.AddNetworkPrefab(networkPrefab);
