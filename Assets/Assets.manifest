@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 912433400
+CRC: 2694580822
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: mod_assets
+      Name: dn_assets
       Dependencies: {}

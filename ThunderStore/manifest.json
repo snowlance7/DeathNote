@@ -1,6 +1,6 @@
 {
   "name": "DeathNote",
-  "version_number": "0.4.1",
+  "version_number": "0.4.2",
   "website_url": "https://ko-fi.com/snowlance",
   "description": "Adds the Death Note as a rare scrap item to kill your enemies!",
   "dependencies": [

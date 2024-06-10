@@ -19,7 +19,7 @@ namespace DeathNote
     {
         private const string modGUID = "Snowlance.DeathNote";
         private const string modName = "DeathNote";
-        private const string modVersion = "0.4.1";
+        private const string modVersion = "0.4.2";
 
         public static AssetBundle? DNAssetBundle;
 
@@ -82,8 +82,8 @@ namespace DeathNote
             // Loading assets
             string sAssemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            DNAssetBundle = AssetBundle.LoadFromFile(Path.Combine(sAssemblyLocation, "mod_assets"));
-            LoggerInstance.LogDebug($"Got DNAssetBundle at: {Path.Combine(sAssemblyLocation, "mod_assets")}");
+            DNAssetBundle = AssetBundle.LoadFromFile(Path.Combine(sAssemblyLocation, "dn_assets"));
+            LoggerInstance.LogDebug($"Got DNAssetBundle at: {Path.Combine(sAssemblyLocation, "dn_assets")}");
             if (DNAssetBundle == null)
             {
                 LoggerInstance.LogError("Failed to load custom assets.");

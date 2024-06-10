@@ -26,7 +26,7 @@ namespace DeathNote.Patches
                 DeathController.EnemyNames = new List<string>();
                 DeathController.ScannedEnemies = new List<string>();
                 logger.LogDebug("Cleared EnemyNames");
-
+                // bruh
                 if (UIControllerScript.Instance == null) { return; }
                 UIControllerScript.Instance.btnActivateEyes.style.display = DisplayStyle.Flex;
                 UIControllerScript.Instance.lblSEDescription.text = "You may, in exchange of half of your life, acquire the power of the Shinigami Eyes, which will enable you to see an entity's name when looking at them.\nThis will reset at the end of the round.";

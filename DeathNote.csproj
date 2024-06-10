@@ -19,8 +19,8 @@
     <Reference Include="0Harmony">
       <HintPath>..\1Resources\1Dependencies\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Publicize="true" Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp" Publicize="true">
+      <HintPath>..\1Lethal Company Debugging\Lethal Company_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\1Resources\1Dependencies\BepInEx.dll</HintPath>
@@ -66,7 +66,7 @@
   </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy &quot;C:\Users\snowl\source\repos\DeathNote\Assets\mod_assets&quot; &quot;C:\Users\snowl\source\repos\1Lethal Company Debugging\BepInEx\plugins&quot; /Y&#xD;&#xA;xcopy &quot;C:\Users\snowl\source\repos\DeathNote\bin\Debug\netstandard2.1\DeathNote.dll&quot; &quot;C:\Users\snowl\source\repos\1Lethal Company Debugging\BepInEx\plugins&quot; /Y" />
+    <Exec Command="xcopy &quot;C:\Users\snowl\source\repos\DeathNote\Assets\dn_assets&quot; &quot;C:\Users\snowl\source\repos\1Lethal Company Debugging\BepInEx\plugins&quot; /Y&#xD;&#xA;xcopy &quot;C:\Users\snowl\source\repos\DeathNote\bin\Debug\netstandard2.1\DeathNote.dll&quot; &quot;C:\Users\snowl\source\repos\1Lethal Company Debugging\BepInEx\plugins&quot; /Y" />
   </Target>
 
 </Project>
