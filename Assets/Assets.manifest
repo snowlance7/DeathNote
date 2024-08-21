@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2694580822
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: dn_assets
+      Dependencies: {}
